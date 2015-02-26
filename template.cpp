@@ -42,6 +42,7 @@ typedef pair<int, int> PII;
 #define ND second
 
 
+
 int main() 
 {
 #ifndef ONLINE_JUDGE
