@@ -41,8 +41,8 @@ typedef pair<int, int> PII;
 #define ST first
 #define ND second
 
-int a[N],ma[N],mi[N],n ;
-lld ans;
+int a[N],mx[N],mi[N];
+lld ans,mix;
 
 int main() 
 {
@@ -53,12 +53,14 @@ int main()
     int n;cin>>n;
     rep(n) cin>>a[i],mi[i]=999999999;
     for(int i=0;i<n;i++) { 
+        mix = 0;
         for(int j=0;i+j<n;j++) {
             mi[j] = min(mi[j],a[i+j]);
-            ma[j] = max(ma[j],a[i+j]);
-            ans += mi[j] * ma[j] *(i+1);
-            ans %= 1000000000;
+            mx[j] = max(mx[j],a[i+j]);
+            mix += mi[j] *  mx[j];
         }
+        ans += (mix % 1000000000) * (i+1);
+        ans %= 1000000000;
     }
     cout<<ans;
     return 0;
