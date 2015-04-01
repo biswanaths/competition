@@ -1,6 +1,6 @@
 #!/bin/sh 
 tmux new-session -d 
-tmux split-window -h 
+tmux split-window -h -p 30 
 tmux split-window -v 
 tmux select-pane -t 0
 tmux send-keys 'vim '"$1"'.cpp' Enter
