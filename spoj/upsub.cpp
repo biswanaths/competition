@@ -98,9 +98,9 @@ int main()
         solve();
         double duration = (clock() - start ) / (double ) CLOCKS_PER_SEC;
         total += duration;
-        //cout<<fixed<<setprecision(9)<<duration<<endl;
+        cout<<fixed<<setprecision(9)<<duration<<endl;
         //print();
     }
-    //cout<<fixed<<setprecision(9)<<total<<endl;
+    cout<<fixed<<setprecision(9)<<total<<endl;
     return 0;
 } 
