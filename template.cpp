@@ -45,6 +45,7 @@ typedef pair<int, int> PII;
 
 int main() 
 {
+    ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);

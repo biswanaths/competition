@@ -41,8 +41,9 @@ typedef pair<int, int> PII;
 #define ST first
 #define ND second
 
-int top[N];
+int top[N],l;
 char seq[N][N];
+string res;
 
 void print() {
     for(int i=0;i<10;i++) {
@@ -53,11 +54,12 @@ void print() {
     }
 }
 
-void dfs(int k,string s,char prev,int n) {
-    if(k==n) {cout<<s<<endl; return ; }
+void dfs(int k,char prev) {
+    if(k==l+1) {cout<<res<<endl; return ; }
     for(int i=top[k];i>=0;i--) {
         if(prev <= seq[k][i])
-            dfs(k+1, s + seq[k][i] , seq[k][i],n);
+            res[k]= seq[k][i],
+            dfs(k+1, seq[k][i]);
     }
     return;
 }
@@ -66,10 +68,9 @@ void solve() {
     string s; 
     cin>>s;
     int z = s.size();
-    //for(int i=0;i<z;i++) 
     for(int j=0;j<z;j++) seq[j][0]=0;
     fill(top,top+z,-1);
-    int l=0;
+    l=0;
     rep(z) {
         int j;
         for(j=0;top[j]!=-1 && seq[j][top[j]] <= s[i] ;j++) ;
@@ -77,7 +78,9 @@ void solve() {
         seq[j][top[j]+1]=0;
         l = max(l,j);
     }
-    dfs(0,"",0,l+1);
+    res="";
+    rep(l) res+='a';
+    dfs(0,0);
     PEL;
 }
 
@@ -89,11 +92,15 @@ int main()
 	//freopen("test.out", "w",stdout);
 #endif
     int t;cin>>t;
+    double total = 0.0;
     while(t--) { 
+        clock_t start = clock();
         solve();
+        double duration = (clock() - start ) / (double ) CLOCKS_PER_SEC;
+        total += duration;
+        //cout<<fixed<<setprecision(9)<<duration<<endl;
         //print();
     }
+    //cout<<fixed<<setprecision(9)<<total<<endl;
     return 0;
-}
-
-
+} 
