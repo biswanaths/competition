@@ -103,13 +103,10 @@ int main()
     //cout<<fixed<<setprecision(9)<<duration<<endl;
     int n,t; cin>>t;
     while(t--) {
-        //cin>>n;
-        n=50000000+t;
-        if(solve(n)!=bf(n)) cout<<n<<" "<<solve(n)<<" "<<bf(n)<<endl;
-        if(t%100==0) cout<<t<<endl;
-        //cout<<solve(n)<<endl;
+        cin>>n;
+        //if(solve(n)!=bf(n)) cout<<n<<" "<<solve(n)<<" "<<bf(n)<<endl;
+        cout<<solve(n)<<endl;
     }
-    cout<<"done"<<endl;
     return 0;
 }
 
