@@ -79,6 +79,7 @@ lld ncr(lld n,lld r) {
 }
 
 lld lt(lld n,lld r) { 
+    // Lucas Theorm 
     int len=0;
     rep(10) nn[i]=rr[i]=0;
     for(int i=0;n>0;nn[i]=n%MOD,n/=MOD,i++,len=max(i,len));
