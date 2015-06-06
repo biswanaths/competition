@@ -37,6 +37,11 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+#define PB push_back
+#define ST first
+#define ND second
+
+
 
 int main() 
 {

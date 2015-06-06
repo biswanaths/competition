@@ -38,6 +38,8 @@ typedef pair<int, int> PII;
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
 
+int d[102];
+
 int main() 
 {
     ios::sync_with_stdio(false);
@@ -45,7 +47,14 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    int t;cin>>t;
+    while(t--) { 
+        int n,tmp,s=0; cin>>n;
+        memset(d,0,sizeof(d));
+        rep(n) cin>>tmp, d[tmp]=1;
+        rep(102) s+=d[i];
+        cout<<s<<endl;
+    }
 
     return 0;
 }

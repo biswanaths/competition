@@ -37,6 +37,11 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+#define PB push_back
+#define ST first
+#define ND second
+
+
 
 int main() 
 {
@@ -45,8 +50,19 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
-
+    string s,t,p;cin>>s>>t;p = "";
+    bool first = true;
+    rep(s.size()) { 
+        if(s[i]==t[i]) p += s[i];
+        else { 
+            p += (first?s[i]:t[i]);
+            first = !first;
+        }
+    }
+    if(!first) 
+        cout<<"impossible"<<endl;
+    else 
+        cout<<p<<endl;
     return 0;
 }
 

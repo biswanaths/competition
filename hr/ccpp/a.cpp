@@ -45,8 +45,17 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
-
+    set<int> db;
+    int n;cin>>n;
+    rep(n) {
+        int v;cin>>v;
+        if(db.find(v)==db.end()) { 
+            db.insert(v);
+            cout<<"ADDED"<<endl;
+        } else { 
+            cout<<"REDUNDANT"<<endl;
+        }
+    }
     return 0;
 }
 

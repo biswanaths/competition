@@ -37,6 +37,10 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+int l,b,n;
+
+char g[102][102];
+
 
 int main() 
 {
@@ -45,7 +49,25 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    cin>>l>>b;
+    for(int i=0;i<l;i++) {
+        string s; cin>>s;
+        for(int j=0;j<b;j++) 
+            g[i][j] = s[j];
+    }
+    cin>>n;
+    while(n--) {
+        int h; cin>>h;
+        for(int k=0;i<b;k++) { 
+            if(g[b-h][k]=='x') { 
+                g[b-h][k]='.';
+            }
+        }
+
+        for(int i=0;i<l;i++) { 
+            for(int j=0;j<b;j++) { 
+                if(g
+    }
 
     return 0;
 }

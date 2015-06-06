@@ -37,6 +37,27 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+#define PB push_back
+#define ST first
+#define ND second
+
+int ps[1110];
+
+void init() {
+    memset(ps,-1,sizeof(ps));
+    ps[0]=ps[1]=0;
+    for(int i=2;i<1110;i++) { 
+        for(int j=2; i*j<1110;j++) { 
+             
+}
+
+
+bool solve() { 
+    int n,k,temp; cin>>n>>k;
+    rep(n) cin>>temp;
+    return true;
+}
+
 
 int main() 
 {
@@ -45,7 +66,11 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    init();
+    int t; cin>>t; 
+    while(t--) { 
+        cout<<(solve()?"Yes":"No")<<endl;
+    }
 
     return 0;
 }

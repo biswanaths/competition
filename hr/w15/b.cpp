@@ -38,6 +38,8 @@ typedef pair<int, int> PII;
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
 
+
+
 int main() 
 {
     ios::sync_with_stdio(false);

@@ -37,6 +37,44 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+bool (* vs[20])(char c);
+set<string> pins;
+
+bool isd(char c) { 
+    return '0' <=c && c<= '9';
+}
+
+bool isc(char c) { 
+    return 'A' <=c && c<='Z';
+}
+
+bool iss(char c) {
+    return c =='-';
+}
+
+void init() { 
+    rep(20) 
+        vs[i] = &isd;
+    vs[3] = &iss;
+    vs[6] = &iss;
+    vs[9] = &iss;
+    vs[18] = &iss;
+    vs[19] = &isc;
+}
+
+
+void process(string s) {
+    for(int k=0;k<s.size();k++) { 
+        int j=0;bool yes = true;
+        for(;j<20 && k+j<s.size();j++) {
+            yes = yes && vs[j](s[k+j]);
+        }
+        if(j==20 && yes ) {
+            pins.insert(s.substr(k,20));
+        }
+    }
+}
+
 
 int main() 
 {
@@ -45,7 +83,18 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    int n;cin>>n;
+    init();
+    while(n--) { 
+        string s; cin>>s;
+        process(s);
+    }
+    if(pins.size() == 0) { 
+        cout<<"JUNK";
+        return 0;
+    }
+    For(pins) 
+        cout<< *it <<endl;
 
     return 0;
 }

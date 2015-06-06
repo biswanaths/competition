@@ -45,8 +45,15 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
-
+    string s; cin>>s;int q;cin>>q;
+    while(q--) { 
+        int a,b;cin>>a>>b;
+        string ss = s.substr(0,a); 
+        string ms = s.substr(a,b-a+1);reverse(ms.begin(),ms.end());
+        string ls = s.substr(b+1,10000);
+        s = ss + ms + ls ;
+        cout<<s<<endl;
+    }
     return 0;
 }
 

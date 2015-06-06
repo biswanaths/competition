@@ -37,6 +37,11 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+#define PB push_back
+#define ST first
+#define ND second
+
+
 
 int main() 
 {
@@ -45,7 +50,21 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    int n; cin>>n;
+    vector<int> goods;
+    for(int i=0;i<n;i++) { 
+        bool good = true;
+        int temp;
+        for(int j=0;j<n;j++) { 
+            cin>>temp;
+            good = good && ( temp == -1 || temp == 2 || temp == 0);
+        }
+        if(good) goods.push_back(i+1);
+    }
+    cout<<goods.size()<<endl;
+    rep(goods.size()) {
+        cout<<goods[i]<<" ";
+    }
 
     return 0;
 }

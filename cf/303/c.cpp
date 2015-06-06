@@ -37,6 +37,13 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+#define PB push_back
+#define ST first
+#define ND second
+
+vector< pair< lld, lld> > trees;
+
+int fell = 0;
 
 int main() 
 {
@@ -45,7 +52,34 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    int n;cin>>n;
+    rep(n) { 
+        pair<lld,lld> temp; cin>>temp.first>>temp.second;
+        trees.PB(temp);
+    }
+
+    lld left = -trees[0].second-2;
+
+    rep(n) { 
+        pair<lld,lld> cur = trees[i];
+        lld posleft = cur.first;
+        if(left < cur.first-cur.second) { 
+            left = cur.first; 
+            fell++;
+        } else { 
+            if(i < n-1 && cur.first+cur.second < trees[i+1].first ) { 
+                left = cur.first + cur.second;
+                fell++;
+            }
+            else if( i==n-1) {
+                left = cur.first + cur.second;
+                fell++;
+            }
+        }
+        left = max(left,posleft);
+        //cout<<cur.first<<" "<<cur.second<<" "<<left<<endl;
+    }
+    cout<<fell;
 
     return 0;
 }

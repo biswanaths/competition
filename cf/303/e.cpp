@@ -37,6 +37,13 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
+#define PB push_back
+#define ST first
+#define ND second
+
+map< pair<int,int> ,int > edges;
+int n,e;
+int d[300002][2];
 
 int main() 
 {
@@ -45,7 +52,18 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cout<<"good"<<endl;
+    cin>>n>>e;
+    rep(e) { 
+        int a,b,c; cin>>a>>b>>c;
+        pair<int,int> p;
+        if(a<b) p.first = a,p.second =b; 
+        else  p.first = b,p.second =a; 
+        edges[p]=c;
+    }
+    int start;cin>>start;
+
+    Queue<int> q; q.push(start);
+
 
     return 0;
 }
