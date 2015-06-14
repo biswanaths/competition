@@ -28,7 +28,7 @@ typedef pair<int, int> PII;
 #define lld long long int 
 #define EOL '\0'
 #define PEL cout<<endl;
-#define N 100002
+#define N 2002
 #define rep(n) for(int i =0;(i)<(int)(n);(i)++)
 #define repij(n,m) for(int i =0;(i)<(int)(n);(i)++) for(int j =0;(j)<(int)(m);(j)++)
 
@@ -37,18 +37,7 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-typedef struct node { 
-    string key;
-    node * children[26];
-} * Node;
-
-Node root = new node();
-
-void insert(char c) {
-    if(root->children['c'-'a']==NULL) {
-    }
-    cout<<c<<endl;
-}
+int s[N];
 
 int main() 
 {
@@ -57,11 +46,17 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    string s; cin>>s; 
-    rep(s.size()) {
-        insert(s[i]);
+    int n; cin>>n;
+    rep(n) { 
+        cin>>s[i];
     }
-
+    rep(n) { 
+        int k=1;
+        for(int j=0;j<n;j++) { 
+            k+=(i!=j && s[i]<s[j])?1:0;
+        }
+        cout<<k<<" ";
+    }
     return 0;
 }
 

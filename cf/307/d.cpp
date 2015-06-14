@@ -37,18 +37,6 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-typedef struct node { 
-    string key;
-    node * children[26];
-} * Node;
-
-Node root = new node();
-
-void insert(char c) {
-    if(root->children['c'-'a']==NULL) {
-    }
-    cout<<c<<endl;
-}
 
 int main() 
 {
@@ -57,10 +45,7 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    string s; cin>>s; 
-    rep(s.size()) {
-        insert(s[i]);
-    }
+    cout<<"good"<<endl;
 
     return 0;
 }

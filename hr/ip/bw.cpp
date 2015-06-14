@@ -18,6 +18,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
+#include <climits>
+#include <cfloat>
 
 
 using namespace std;
@@ -37,18 +39,9 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-typedef struct node { 
-    string key;
-    node * children[26];
-} * Node;
+vector<pair<double,double> > points;
+double ma = -2, mi = 2;
 
-Node root = new node();
-
-void insert(char c) {
-    if(root->children['c'-'a']==NULL) {
-    }
-    cout<<c<<endl;
-}
 
 int main() 
 {
@@ -57,10 +50,38 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    string s; cin>>s; 
-    rep(s.size()) {
-        insert(s[i]);
+    int n;cin>>n;
+    rep(n) {
+        double x,y; cin>>x>>y;
+        points.push_back(make_pair(x,y));
+        ma = ( ma<y)?y:ma;
+        mi = ( mi>y)?y:mi;
     }
+
+    bool square = true;
+    vector<bool> ts;
+
+    For(points) {
+        square = square && (it->second == ma || it->second ==mi);
+        if(it->second ==ma ) {
+            if(ts.size()==0) ts.push_back(1);
+            else {
+                if(ts[ts.size()-1]==1) ;
+                else ts.push_back(1);
+            }
+        }
+
+        if(it->second ==mi ) {
+            if(ts.size()==0) ts.push_back(0);
+            else {
+                if(ts[ts.size()-1]==0) ;
+                else ts.push_back(0);
+            }
+        }
+    }
+
+    cout<<(square?"square":"sine")<<"-wave"<<endl;
+    cout<<ts.size()/2<<endl;
 
     return 0;
 }

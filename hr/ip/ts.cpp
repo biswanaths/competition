@@ -37,17 +37,25 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-typedef struct node { 
-    string key;
-    node * children[26];
-} * Node;
+map<int,set<int> > edges;
+int id[1002];
+queue<int> q;
+int n,m;
 
-Node root = new node();
-
-void insert(char c) {
-    if(root->children['c'-'a']==NULL) {
+void pushtoqueue() {
+    rep(n) {
+        if(id[i]==0) q.push(i);
     }
-    cout<<c<<endl;
+}
+    
+
+int solve(int n) {
+    while(!q.empty()) { 
+        int curr = q.front();
+        q.pop(); 
+        if(curr==-1 && (!q.empty())) q.push(-1);
+    }
+    return 0;
 }
 
 int main() 
@@ -57,9 +65,25 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    string s; cin>>s; 
-    rep(s.size()) {
-        insert(s[i]);
+    int t; cin>>t;
+    for(int ti=1;ti<=t;ti++) {
+        cin>>n>>m;
+        map<int, set<int> > ed; queue<int> eq;
+        swap(edges,ed); swap(q,eq);
+        memset(id,0,sizeof(id));
+        rep(m) {
+            int a,b;cin>>a>>b;
+            if(edges.find(a)==edges.end()) 
+                edges[a]=set<int>();
+            edges[a].insert(b);
+            id[b]++;
+        }
+        pushtoqueue();
+        q.push(-1);
+        int s = solve(n);
+        cout<<"Case "<<ti<<": ";
+        if(s==-1) cout<<"Never Ends"<<endl;
+        else cout<<s<<" semester(s)"<<endl;
     }
 
     return 0;
