@@ -4,7 +4,7 @@ tmux new-session -d
 tmux split-window -h -p 30 
 tmux split-window -v 
 tmux select-pane -t 0
-tmux send-keys 'vim '"$y"'.cpp' Enter
+tmux send-keys 'vim +47 '"$y"'.cpp' Enter
 tmux select-pane -t 1
 tmux send-keys 'vim test.in' Enter
 tmux select-pane -t 2
