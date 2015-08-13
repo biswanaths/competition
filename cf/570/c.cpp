@@ -37,35 +37,38 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-#define PB push_back
-#define ST first
-#define ND second
-
-int solve(int n) {
-    vector<int> a;bool np = false;
-    rep(n) {
-        int p; cin>>p; a.push_back(p);
-        if(p<2) np = true;
-    }
-    if(np) return -1;
-    sort(a.begin(),a.end());
-    int ans=0;
-    rep(a.size()) ans+=a[i];
-    ans-=a[0]; ans+=2;
-    return ans;
-}
+string s;
 
 int main() 
 {
+    ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    ios::sync_with_stdio(false);
-    int t,x,y,k,n;cin>>t;
-    while(t--) { 
-        cin>>n; solve(n);
+    int n,m;cin>>n>>m;
+    cin>>s; 
+    s = "x" + s + "x";
+    int p,inv=0; char c;
+    for(int i=1;i<=n;i++) 
+        if(s[i]=='.' && s[i-1]=='.') inv++;
+    while(m--) { 
+        cin>>p>>c;
+        if((c=='.' && s[p]=='.') || (c!='.' && s[p]!='.')) {s[p]=c; cout<<inv<<endl;continue; }
+        if(c=='.') { 
+            if(s[p-1]=='.' && s[p+1]=='.') inv+=2; else
+            if(s[p-1]=='.' || s[p+1]=='.') inv+=1; else 
+                                           inv+=0;
+        } else { 
+            if(s[p-1]=='.' && s[p+1]=='.') inv-=2; else
+            if(s[p-1]=='.' || s[p+1]=='.') inv-=1; else 
+                                           inv-=0;
+        }
+        s[p]=c;
+        cout<<inv<<endl;
     }
+
+
     return 0;
 }
 
