@@ -27,18 +27,18 @@ object  IsTautology extends RegexParsers {
 
     def variables(e:Expr):Set[Char] = e match { 
         case Prop (x)   => Set(x)
-        case Paren  (x)   => variables(x)
+        case Paren(x)   => variables(x)
         case Not  (x)   => variables(x)
         case And  (x,y) => (variables(x) ++ variables(y))
-        case Or     (x,y) => (variables(x) ++ variables(y))
+        case Or   (x,y) => (variables(x) ++ variables(y))
     }
 
     def evaluate(e:Expr,truths:Set[Char]):Boolean = e match { 
         case Prop (x)   => truths.contains(x)
-        case Paren  (x)   => evaluate(x,truths)
+        case Paren(x)   => evaluate(x,truths)
         case Not  (x)   => !evaluate(x,truths)
         case And  (x,y) => evaluate(x,truths) & evaluate(y,truths) 
-        case Or     (x,y) => evaluate(x,truths) | evaluate(y,truths)
+        case Or   (x,y) => evaluate(x,truths) | evaluate(y,truths)
     }
 
     def apply(s:String): Boolean =  { 
