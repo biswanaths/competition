@@ -28,7 +28,8 @@ typedef pair<int, int> PII;
 #define lld long long int 
 #define EOL '\0'
 #define PEL cout<<endl;
-#define N 300002
+#define N 1000002
+#define M 1000000007
 #define rep(n) for(int i =0;(i)<(int)(n);(i)++)
 #define repij(n,m) for(int i =0;(i)<(int)(n);(i)++) for(int j =0;(j)<(int)(m);(j)++)
 
@@ -37,8 +38,19 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-int n,k;
-int a[N];
+lld c[N][N];
+
+int f(int a, int b) { 
+    if(c[a][b]) return c[a][b];
+    lld ans = 
+        1 
+        + (a>0?f(a-1,b):0)
+        + (b>0?f(a,b-1):0);
+    ans%=M;
+    c[a][b]=c[b][a]=ans;
+    return c[a][b];
+}
+
 
 int main() 
 {
@@ -47,12 +59,9 @@ int main()
 	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
-    cin>>n>>k;
-    rep(n) cin>>a[i];
-    sort(a,a+n);
-
-    rep(n) cout<<a[i];
-
+    int n;cin>>n;
+    c[0][0]=1;
+    cout<<f(n,n)<<endl;
 
     return 0;
 }
