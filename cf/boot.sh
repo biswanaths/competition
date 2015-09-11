@@ -9,8 +9,8 @@ cp ../template.cpp $1/c.cpp
 cp ../template.cpp $1/d.cpp
 cp ../template.cpp $1/e.cpp
 
-ln -s /Users/biswanaths/code/competition/wr.sh $1/wr.sh 
-ln -s /Users/biswanaths/code/competition/comp-tmux.sh $1/comp-tmux.sh
+ln -s ~/code/competition/wr.sh $1/wr.sh 
+ln -s ~/code/competition/comp-tmux.sh $1/comp-tmux.sh
 
 touch $1/test.in
 touch $1/test.out
