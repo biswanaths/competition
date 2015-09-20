@@ -39,7 +39,7 @@ def start_prediction():
 
     test_xs = test.values.astype(float)
 
-     just use forest with 100 tress for the prediction
+    #just use forest with 100 tress for the prediction
     recognizer = RandomForestClassifier(100) 
 
     # training with the data
