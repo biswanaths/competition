@@ -17,6 +17,38 @@ import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.cross_validation import cross_val_score
 
+'''
+Write the ans, a one dimensional array to file
+the format is 
+header : ImageId,Label
+follwed by rows, 
+ImageId is serial number 
+Label is the predicted value of the digit
+'''
+def write_ans(ans):
+    with open('../data/ans.out','w') as f:
+        f.write("ImageId,Label\n")
+        f.writelines([ str(idx+1) + "," + str(val) + "\n"  for idx, val in enumerate(ans)])
+
+def start_prediction():
+    test = pd.read_csv('../data/test.csv')
+    train = pd.read_csv('../data/train.csv')
+
+    train_xs = train.values[:, 1:].astype(float)
+    train_ys = train.values[:, 0]
+
+    test_xs = test.values.astype(float)
+
+     just use forest with 100 tress for the prediction
+    recognizer = RandomForestClassifier(100) 
+
+    # training with the data
+    recognizer.fit(train_xs, train_ys)
+
+    ans = recognizer.predict(test_xs)
+
+    return ans
+
 
 def main():
     print "Digit Recognizer"
@@ -33,7 +65,7 @@ def main():
 
     print "Start learning"
     n_trees = [ 10, 15, 20, 25, 30, 40, 50, 70, 100]
-
+    
     for n_tree in n_trees: 
         print n_tree
         recognizer = RandomForestClassifier(n_tree)
@@ -52,6 +84,7 @@ def main():
     plt.ylabel('CV Score')
     plt.xlabel('# of trees')
     plt.savefig('cv_trees.png')
+    print 'Done'
 
 if __name__ == '__main__':
     main()
