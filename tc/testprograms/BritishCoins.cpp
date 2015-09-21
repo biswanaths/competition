@@ -20,17 +20,17 @@
 
 using namespace std;
 
-#define fori(n) for(int i=0;i<(n);i++) 
+#define rep(n) for(int i=0;i<(n);i++) 
+#define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
 class BritishCoins {
 public:
 	vector <int> coins(int pence) {
-		vector<int> v(3);
-		v[0] = pence /240;
-		pence%=240;
-		v[1] = pence/ 12;
-		v[2] = pence%12;
-		return v;
+		vector<int> ans(3);
+		ans[0]= pence /240; pence%=240;
+		ans[1]= pence /12 ; pence%=12 ;
+		ans[2]= pence;
+		return ans;	
 	}
 };
 
@@ -154,4 +154,7 @@ int main() {
 	return 0;
 }
 // END KAWIGIEDIT TESTING
+
+
+
 //Powered by KawigiEdit 2.1.4 (beta) modified by pivanof!
