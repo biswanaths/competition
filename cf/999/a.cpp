@@ -37,17 +37,27 @@ typedef pair<int, int> PII;
 
 #define For(iterable) for(__typeof__((iterable).begin()) it = (iterable).begin(); it != (iterable).end(); ++it)
 
-#define PB push_back
-#define ST first
-#define ND second
-
 
 int main() 
 {
+    ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
-	//freopen("test.in", "r",stdin);
+	freopen("test.in", "r",stdin);
 	//freopen("test.out", "w",stdout);
 #endif
+    int p[102];
+    int n,k;cin>>n>>k;
+    rep(n) cin>>p[i];
+    int ans=0;
+    for(int i=0;i<n&&p[i]<=k;i++,ans++);
+    if(ans==n) { 
+        cout<<n; return 0;
+    }
+
+    for(int i=n-1;i>=0 && p[i]<=k;i--,ans++);
+
+    cout<<ans;
+    
 
     return 0;
 }
