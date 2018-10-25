@@ -1,1 +1,1 @@
-/Users/biswanaths/code/competition/comp-tmux.sh
+/Users/biswanath/code/competition/comp-tmux.sh
