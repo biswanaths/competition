@@ -37,17 +37,19 @@ typedef pair<int, int> PII;
 int a[2*N];
 
 int solve(int n) { 
-    int ans = 0, t;
+    int t, ans = 3*n, rmin = 3*n;
+
     rep(n) {
         cin>>t; a[t]=i;
     }
     rep(n) {
         cin>>t; a[t]=i;
     }
-    rep(2*n) {
-        cout<<a[i]<<" ";
+
+    for(int i=2*n;i>0;i-=2) { 
+        rmin = min(rmin, a[i]); 
+        ans  = min(ans , rmin + a[i-1]);
     }
-    cout<<endl;
     return ans;
 }
 
@@ -64,8 +66,6 @@ int main()
         int n; cin>>n;
         cout<<solve(n)<<endl;
     }
-    cout<<"good"<<endl;
-
     return 0;
 }
 
